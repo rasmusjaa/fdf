@@ -6,35 +6,55 @@
 /*   By: rjaakonm <rjaakonm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:28:30 by rjaakonm          #+#    #+#             */
-/*   Updated: 2020/01/02 14:49:45 by rjaakonm         ###   ########.fr       */
+/*   Updated: 2020/01/08 19:15:15 by rjaakonm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
-// yhdista
 #include "fdf.h"
+
+int			close_exit(t_fdf *node)
+{
+	int		i;
+
+	i = 0;
+	while (i < node->height)
+	{
+		free(node->grid[i]);
+		i++;
+	}
+	free(node->grid);
+	free(node);
+	exit(0);
+}
+
+int			exit_message(char *message)
+{
+	ft_printf("%s\n", message);
+	exit(0);
+}
+
+void		check_max_z(t_fdf *node)
+{
+	if ((int)node->max_z > MAX_Z || abs((int)node->min_z) > MAX_Z)
+	{
+		ft_printf("Exceeded set max z value (%d), exiting\n", MAX_Z);
+		exit(0);
+	}
+}
 
 long long	abs_nb(long long x)
 {
 	if (x < 0)
 		return (-1 * x);
-		else
-	return (x);
+	else
+		return (x);
 }
 
-float	abs_f(float x)
+float		abs_f(float x)
 {
 	if (x < 0)
 		return (-1 * x);
-		else
-	return (x);
-}
-
-void		zoom(float *x1, float *x2, float *y1, float *y2, t_fdf *node)
-{
-	*x1 *= node->zoom;
-	*x2 *= node->zoom;
-	*y1 *= node->zoom;
-	*y2 *= node->zoom;
+	else
+		return (x);
 }
