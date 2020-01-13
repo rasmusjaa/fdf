@@ -6,12 +6,13 @@
 /*   By: rjaakonm <rjaakonm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:00:56 by rjaakonm          #+#    #+#             */
-/*   Updated: 2020/01/08 19:21:14 by rjaakonm         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:11:59 by rjaakonm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft.h"
+#include "ft_printf.h"
 #include "fdf.h"
 
 static void	node_values(t_fdf *node)
@@ -28,6 +29,8 @@ static void	node_values(t_fdf *node)
 	node->rot_y = 0;
 	node->rot_z = 0;
 	node->projection = 1;
+	node->mouse_1 = 0;
+	node->mouse_2 = 0;
 }
 
 int			main(int ac, char **av)
@@ -51,6 +54,9 @@ int			main(int ac, char **av)
 	node->bpp /= 8;
 	map_to_window(node);
 	mlx_hook(node->win_ptr, 2, 0, deal_key, node);
+	mlx_hook(node->win_ptr, 4, 0, mouse_press, node);
+	mlx_hook(node->win_ptr, 5, 0, mouse_release, node);
+	mlx_hook(node->win_ptr, 6, 0, mouse_move, node);
 	mlx_hook(node->win_ptr, 17, 0, close_exit, node);
 	mlx_loop(node->mlx_ptr);
 	return (0);

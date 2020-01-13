@@ -6,20 +6,21 @@
 #    By: rjaakonm <rjaakonm@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/07 15:06:49 by rjaakonm          #+#    #+#              #
-#    Updated: 2020/01/08 18:59:23 by rjaakonm         ###   ########.fr        #
+#    Updated: 2020/01/13 12:01:35 by rjaakonm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 SRCS =	srcs/main.c \
-		srcs/map_funcs.c \
-		srcs/number_grid.c \
-		srcs/projections.c \
 		srcs/color.c \
-		srcs/draw.c \
 		srcs/controls.c \
-		srcs/help_funcs.c
+		srcs/draw.c \
+		srcs/help_funcs.c \
+		srcs/map_funcs.c \
+		srcs/mouse.c \
+		srcs/number_grid.c \
+		srcs/projections.c
 
 FLAGS = -Wall -Wextra -Werror
 

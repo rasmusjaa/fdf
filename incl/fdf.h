@@ -6,7 +6,7 @@
 /*   By: rjaakonm <rjaakonm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 19:45:14 by rjaakonm          #+#    #+#             */
-/*   Updated: 2020/01/08 19:24:29 by rjaakonm         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:59:24 by rjaakonm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ typedef struct		s_fdf
 	int		rot_x;
 	int		rot_z;
 	int		projection;
+	int		mouse_1;
+	int		mouse_2;
+	int		mouse_x;
+	int		mouse_y;
 }					t_fdf;
 
 typedef	struct		s_fdf_list
@@ -71,6 +75,10 @@ long long			abs_nb(long long x);
 float				abs_f(float x);
 
 void				map_to_window(t_fdf *node);
+
+int					mouse_move(int x, int y, t_fdf *node);
+int					mouse_release(int button, int x, int y, t_fdf *node);
+int					mouse_press(int button, int x, int y, t_fdf *node);
 
 int					get_map(char *str, t_fdf *node);
 
